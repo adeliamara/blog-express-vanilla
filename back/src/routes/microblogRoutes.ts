@@ -6,9 +6,9 @@ export const microblogRoutes: Router = Router()
 
 
 //import microblog from './Services/MicroBlog/MicroBlog';
-import MicroblogPersistente from '../repositories/MicroBlogPersistente';
+import MicroblogRepository from '../repositories/MicroblogRepository';
 
-const microblog = new MicroblogPersistente();
+const microblog = new MicroblogRepository();
 import { Post } from '../models/Post';
 
 import MicroblogController from '../controller/MicroblogController';

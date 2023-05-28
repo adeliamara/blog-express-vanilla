@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 import { Post } from "../models/Post";
-import MicroblogPersistente from "../repositories/MicroBlogPersistente";
+import MicroblogRepository from "../repositories/MicroblogRepository";
 import { Router } from 'express';
 import { BadRequestError, MethodNotAllowed, NotFoundError } from "../utils/api-error";
 
 
-export const microblogRoutes: Router = Router()
-const microblog = new MicroblogPersistente();
+const microblog: MicroblogRepository = new MicroblogRepository();
 
 export default class MicroblogController {
 
