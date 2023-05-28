@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import { commentRoutes } from './src/routes/commentRoutes';
 import { microblogRoutes } from './src/routes/microblogRoutes';
 import { errorMiddleware } from './src/middleware/errorMiddleware';
+
 const port = 3000;
 const app = express();
 app.use(express.json());
