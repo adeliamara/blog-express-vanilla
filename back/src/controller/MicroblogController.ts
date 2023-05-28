@@ -12,7 +12,7 @@ export default class MicroblogController {
     getAllPosts = async (request: Request, response: Response) => {
         const posts: Post[] = await microblog.retrieveAll();
 
-        return response.status(200).json(posts);
+        return response.status(200).json({posts});
     }
 
     getPostById = async (request: Request, response: Response) => {
@@ -82,21 +82,11 @@ export default class MicroblogController {
         const post: Post | undefined = await microblog.retrieve(Number(id));
         console.log(post)
         if (!post) {
-            console.log('aqui')
             throw new NotFoundError('Post not found!');
         }
 
-        const { title, text, likes } = request.body as { title?: string, text?: string; likes?: number };
 
-
-        if (!text || !likes || !title) {
-            console.log('aqui')
-            throw new MethodNotAllowed('Method not allowed');
-        }
-
-        post.text = text;
-        post.likes = likes;
-        post.title = title;
+        post.likes = post.likes + 1;
 
         microblog.update(post);
         return response.status(200).json(post);
