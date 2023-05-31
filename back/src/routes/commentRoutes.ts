@@ -3,8 +3,8 @@ import{ Request, Response, Router } from 'express';
 
 export const commentRoutes: Router = Router();
 import { Post } from '../models/Post';
-import MicroblogPersistente from '../repositories/MicroBlogPersistente';
-const microblog = new MicroblogPersistente();
+import MicroblogRepository from '../repositories/MicroblogRepository';
+const microblog = new MicroblogRepository();
 
 //import microblog from './Services/MicroBlog/MicroBlog';
 import CommentRepository from '../repositories/CommentRepository';
