@@ -78,18 +78,21 @@ export default class MicroblogController {
 
     incrementLikePostById = async (request: Request, response: Response) => {
         const { id } = request.params;
-        console.log(id)
+        const keys = Object.keys(request.body);
+        
+        if (keys.length > 1  || (keys.length === 1 && keys[0] !== 'likes')) {
+          throw new MethodNotAllowed('bad request');
+        }
+        
         const post: Post | undefined = await microblog.retrieve(Number(id));
-        console.log(post)
         if (!post) {
             throw new NotFoundError('Post not found!');
         }
 
 
         post.likes = post.likes + 1;
-
         microblog.update(post);
-        return response.status(200).json(post);
+        return response.status(200).json( post);
 
     }
 
