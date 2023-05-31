@@ -129,3 +129,29 @@ footer p a {
     color: #333;
     text-decoration: none;
 }
+
+
+/* Estilizando o ícone de curtida */
+.fa-thumbs-up {
+    color: blue; /* Define a cor do ícone */
+    font-size: 20px; /* Define o tamanho do ícone */
+    margin-right: 5px; /* Define a margem à direita do ícone */
+
+  }
+  
+  /* Estilizando a contagem de likes */
+  .like-count {
+    font-weight: bold; /* Define a fonte em negrito para a contagem de likes */
+  }
+
+  .button-like {
+    cursor: pointer;
+}
+
+.transparent-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+

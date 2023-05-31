@@ -43,23 +43,52 @@ async function addPost() {
     appendPost(post);
 }
 
+async function addLike(id) {
+  const config = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
 
-appendPost = (post) => {
-    const template = document.getElementById('post-template');
+  const response = await fetch(`http://localhost:3000/posts/${id}/like`, config);
+  const post = await response.json();
+
+  const likeCountElement = document.getElementById(id).querySelector('.like-count');
+  if (likeCountElement) {
+    likeCountElement.innerText = post.likes;
+  }
+}
+
+
+
+
+async function appendPost (post){
+  const template = document.getElementById('post-template');
     const postElement = document.importNode(template.content, true);
-
+    const likeButton = postElement.querySelector('button')
+    
     const postTitle = postElement.querySelectorAll('h3')[0]
     postTitle.innerText = post.title;
     const postItens = postElement.querySelectorAll('p')
     postItens[0].innerText = post.text;
-    postItens[1].innerText = post.likes + " like(s)";
+    const likeCountElement = postElement.querySelector('.like-count');
+    likeCountElement.innerText = post.likes
+    const article = postElement.querySelectorAll('article')[0]
+    article.id = post.id
 
     document.getElementById('timeline').append(postElement);
-}
+    likeButton.onclick = (event) => {
+      event.preventDefault(); // Impede o comportamento padrão do evento de clique
+      addLike(post.id);
+    };
+    
+  }
 
 window.onload = () => {
     const btnAddPost = document.getElementById('add-post')
     btnAddPost.onclick = addPost;
+
     loadPosts()
 }
 
