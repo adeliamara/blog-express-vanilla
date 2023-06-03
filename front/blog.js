@@ -82,6 +82,27 @@ async function addLike(id) {
   }
 }
 
+const deletePost = async (id) => {
+  const config = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
+
+  confirmed = confirm("Você quer mesmo deletar esse post?")
+
+  if(confirmed){
+    const response = await fetch(`http://localhost:3000/posts/${id}`, config);
+  }
+
+  removePost(id);
+}
+
+const removePost = async (postId) => {
+  const post = document.getElementById(postId);
+  post.remove();
+}
 
 
 
@@ -90,7 +111,10 @@ async function addLike(id) {
 function appendPost(post) {
   const template = document.getElementById('post-template');
   const postElement = document.importNode(template.content, true);
-  const likeButton = postElement.querySelector('button')
+  const buttons = postElement.querySelectorAll('button')
+
+  const likeButton = buttons[0]
+  const deleteButton = buttons[1]
 
   const postTitle = postElement.querySelectorAll('h3')[0]
   postTitle.innerText = post.title;
@@ -106,6 +130,8 @@ function appendPost(post) {
     event.preventDefault(); // Impede o comportamento padrão do evento de clique
     addLike(post.id);
   };
+
+  deleteButton.onclick = () => {deletePost(post.id)};
 }
 
 window.onload = () => {

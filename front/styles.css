@@ -155,3 +155,24 @@ footer p a {
     cursor: pointer;
 }
 
+
+.fa-trash {
+    color: blue; /* Define a cor do ícone */
+    font-size: 20px; /* Define o tamanho do ícone */
+    margin-right: 5px; /* Define a margem à direita do ícone */
+
+  }
+  .row-buttons {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+
+  }
+  
+  .row-buttons p {
+    margin-right: 10px;
+  }
+  
+  .row-buttons button {
+    margin-right: 10px;
+  }
