@@ -1,15 +1,7 @@
-import { Request, Response } from 'express';
 
 import { Router } from 'express';
 
 export const microblogRoutes: Router = Router()
-
-
-//import microblog from './Services/MicroBlog/MicroBlog';
-import MicroblogRepository from '../repositories/MicroblogRepository';
-
-const microblog = new MicroblogRepository();
-import { Post } from '../models/Post';
 
 import MicroblogController from '../controller/MicroblogController';
 
