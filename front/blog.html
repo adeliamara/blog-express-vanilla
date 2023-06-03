@@ -27,8 +27,10 @@
 		<main class="row">
 			<section id="new-post">
 				<h3>New post</h3>
-				<input id="post-title" placeholder="Post title" required>
-				<textarea id="post-text" placeholder="Type your message..." cols=50 rows=5></textarea>
+				<span id="title-error" class="error-message"></span>
+				<input id="post-title" class="form-control" placeholder="Post title" required>
+				<span id="text-error" class="error-message"></span>
+				<textarea id="post-text" class="form-control" placeholder="Type your message..." cols=50 rows=5 required></textarea>				
 				<button id="add-post">Add post</button>
 			</section>
 
