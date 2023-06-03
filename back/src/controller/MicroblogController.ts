@@ -12,7 +12,7 @@ export default class MicroblogController {
     getAllPosts = async (request: Request, response: Response) => {
         const posts: Post[] = await microblog.retrieveAll();
 
-        return response.status(200).json({posts});
+        return response.status(200).json(posts);
     }
 
     getPostById = async (request: Request, response: Response) => {
@@ -91,8 +91,8 @@ export default class MicroblogController {
 
 
         post.likes = post.likes + 1;
-        microblog.update(post);
-        return response.status(200).json( post);
+        await microblog.update(post);
+        return response.status(200).json( post.likes);
 
     }
 
